@@ -1,0 +1,150 @@
+html{
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: "Jacquard 24", system-ui;
+}
+    
+body{
+    min-height: 100%;
+    margin: 0;
+    background-color: #000;
+    display: grid;
+    grid-template-areas: 
+                        'info story'
+                        'links story';
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 30rem 10rem;
+}
+
+.info-container {
+    grid-area: info;
+    background-color: #000;
+}
+p {
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#clock {
+    font-size: 12rem;
+    color: white;
+    text-align: center;
+    margin-top: 7rem;
+}
+
+#alert {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.links-container {
+    grid-area: links;
+    display: flex;
+    flex-direction: column;
+}
+
+.links {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin: 0.5rem;
+}
+
+.links:hover {
+    width: 32px;
+    height: 32px;
+}
+
+.story-container {
+    grid-area: story;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.riddle{
+    height: 17rem;
+    padding: 2rem 6rem;
+}
+
+button {
+    color: #fff;
+    font-size: 1rem;
+    background-color: rgb(216, 0, 0);
+    border-radius: 5px;
+    border: none;
+    width: 4rem;
+    height: 2rem;
+    margin: 3rem 1rem;
+}
+
+button:hover {
+    background-color: rgb(109, 0, 0);
+}
+
+input {
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #1b1b1b;
+    border: none;
+    width: 10rem;
+    height: 2rem;
+    margin-top: 3rem;
+    margin-left: 12rem;
+}
+
+.video-container {
+    margin-left: auto;
+    width: 100vh;
+    height: 27rem;
+}
+video {
+    width: 100vh;
+    height: 27rem;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; } to { opacity: 1; } 
+}
+
+#finalImg {
+    width: 20rem;
+    height: 30rem;
+    margin-top: 5rem;
+    opacity: 0.6;
+    margin-left: 80vh;
+    animation: fimg-opcty 2s;
+}
+@keyframes fimg-opcty{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 600px) {
+    p {
+        font-size: 2rem;
+    }
+
+    #clock {
+        font-size: 5rem;
+    }
+
+    #alert {
+        font-size: 0.3rem;
+    }
+
+    .links {
+        width: 2rem;
+        height: 2rem;
+    }
+}
