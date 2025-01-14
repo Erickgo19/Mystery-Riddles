@@ -27,6 +27,7 @@ function countdown(leftTime) {
             const showVideo = document.createElement("video");
             showVideo.src = "media/Final.mp4";
             showVideo.autoplay = true;
+            showVideo.preload = "auto";
             videoContainer.appendChild(showVideo);
             showVideo.addEventListener("ended", () => {
                 const body = document.querySelector("body");
@@ -87,6 +88,7 @@ function storyLine() {
         let video = document.createElement("video");
         video.src = "media/video2.mp4";
         video.autoplay = true;
+        video.preload = "auto";
         videoContainer.appendChild(video);
         video.addEventListener("ended", () => {
             nextRiddle();
@@ -95,6 +97,7 @@ function storyLine() {
         let video = document.createElement("video");
         video.src = "media/video3.mp4";
         video.autoplay = true;
+        video.preload = "auto";
         videoContainer.appendChild(video);
         video.addEventListener("ended", () => {
             nextRiddle();
@@ -143,6 +146,7 @@ function nextRiddle() {
     const showVideo = document.createElement("video");
     showVideo.src = video;
     showVideo.style.display = "none";
+    showVideo.preload = "auto";
     videoContainer.appendChild(showVideo);
 
     button.addEventListener("click", ()=> {
