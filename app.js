@@ -25,7 +25,7 @@ function countdown(leftTime) {
             const videoContainer = document.querySelector(".video-container");
             videoContainer.innerHTML = " ";
             const showVideo = document.createElement("video");
-            showVideo.src = "media/Final.mp4";
+            showVideo.src = "media/Final.hevc.mp4";
             showVideo.autoplay = true;
             showVideo.preload = "auto";
             videoContainer.appendChild(showVideo);
@@ -57,22 +57,22 @@ const data = [
     {
         riddle: "Though invisible, everyone desires it, Opens doors and minds, always progresses. In books and words, it is hidden, The greatest treasure a human has ever had.",
         answer: "knowledge",
-        video: "media/Journal1.mp4"
+        video: "media/Journal1.hevc.mp4"
     },
     {
         riddle: "Knows nothing, yet thinks it knows everything, Blind obstinacy is its loyal companion. When it manifests, chaos will reign, And in the shadow, its dark reign will grow.",
         answer: "ignorance",
-        video: "media/Journal2.mp4"
+        video: "media/Journal2.hevc.mp4"
     },
     {
         riddle: "Enters uninvited, leaves doubts as it passes, Breaks bonds, sows fear without end. Never shows itself, but is always felt, An invisible poison, growing in the mind.",
         answer: "distrust",
-        video: "media/Journal3.mp4"
+        video: "media/Journal3.hevc.mp4"
     },
     {
         riddle: "End of all, without exception, No one escapes its silent song. Eternal journey, endless mystery, Where everything that had a beginning ends.",
         answer: "death",
-        video: "media/Final.mp4"
+        video: "media/Final.hevc.mp4"
     }
 ];
 
@@ -86,7 +86,7 @@ function storyLine() {
         nextRiddle();
     } else if (currentIndex === 1) {
         let video = document.createElement("video");
-        video.src = "media/video2.mp4";
+        video.src = "media/video2.hevc.mp4";
         video.autoplay = true;
         video.preload = "auto";
         videoContainer.appendChild(video);
@@ -95,7 +95,7 @@ function storyLine() {
         });
     } else if (currentIndex === 2) {
         let video = document.createElement("video");
-        video.src = "media/video3.mp4";
+        video.src = "media/video3.hevc.mp4";
         video.autoplay = true;
         video.preload = "auto";
         videoContainer.appendChild(video);
