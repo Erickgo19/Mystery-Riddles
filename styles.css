@@ -1,9 +1,19 @@
+@media (min-width: 601px) {
+    
+
 html{
     box-sizing: border-box;
-    height: 100vh;
+    height: 100%;
     font-family: "Jacquard 24", system-ui;
 }
-    
+
+.cascadia-mono {
+    font-family: "Cascadia Mono", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body{
     min-height: 100%;
     margin: 0;
@@ -13,7 +23,38 @@ body{
                         'info story'
                         'links story';
     grid-template-columns: 40% 60%;
-    grid-template-rows: 30rem 10rem;
+    grid-template-rows: 74.5% 25%;
+}
+
+.start-screen {
+    min-height: 100vh;
+    min-width: 100vw;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button{
+    width: 10rem;
+    height: 5rem;
+    font-family: "Jacquard 24", system-ui;
+    font-size: 2rem;
+    background-color: #000;
+    border: 2px solid rgb(80, 80, 80);
+    transition: box-shadow 0.2s linear;
+    cursor: pointer;
+    border-radius: 25px;
+    color: #fff;
+}
+
+#start-button:hover {
+    box-shadow: 2px 2px 25px rgba(80, 80, 80);
+    animation: fade 1.5s linear infinite;
 }
 
 .info-container {
@@ -35,7 +76,7 @@ p {
 }
 
 #alert {
-    font-size: 2rem;
+    font-size: 2.1rem;
     text-align: center;
 }
 
@@ -43,18 +84,36 @@ p {
     grid-area: links;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+}
+
+a {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    transition: background-color 0.2s linear box-shadow 0.2s linear;
+    margin-left: 2px;
+}
+
+a:hover {
+    background-color: #F00;
+    box-shadow: 2px 2px 5px #f00 ;
 }
 
 .links {
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    margin: 0.5rem;
+    transition: width 0.2s linear height 0.2s linear;
 }
 
 .links:hover {
-    width: 32px;
-    height: 32px;
+    width: 31px;
+    height: 31px;
 }
 
 .story-container {
@@ -62,27 +121,31 @@ p {
     display: flex;
     flex-direction: column;
     background-color: #000;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas: 'riddle-container'
+                         'video-container';
+    grid-template-rows: 48% auto;
 }
 
 .riddle{
-    height: 17rem;
+    grid-area: riddle-container;
+    box-sizing: border-box;
     padding: 2rem 6rem;
 }
 
-button {
+.Try-buttom {
     color: #fff;
     font-size: 1rem;
     background-color: rgb(216, 0, 0);
     border-radius: 5px;
     border: none;
-    width: 4rem;
+    width: 6rem;
     height: 2rem;
     margin: 3rem 1rem;
+    cursor: pointer;
 }
 
-button:hover {
+.Try-button:hover {
     background-color: rgb(109, 0, 0);
 }
 
@@ -99,18 +162,42 @@ input {
 }
 
 .video-container {
+    grid-area: video-container;
+    position: relative;
     margin-left: auto;
     width: 100vh;
-    height: 27rem;
-}
-video {
-    width: 100vh;
-    height: 27rem;
-    animation: fadeIn 2s;
+    padding: 0;
 }
 
-@keyframes fadeIn { 
-    from { opacity: 0; } to { opacity: 1; } 
+.text-container {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 100vh;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.subtitles {
+    font-family: "tahoma";
+    font-size: 2rem;
+    color: #fff;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #000;
+    font-weight: bold;
+}
+
+.background-gif {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100vh;
+    height: 100%;
+    z-index: 0;
 }
 
 #finalImg {
@@ -130,21 +217,18 @@ video {
     }
 }
 
-@media (max-width: 600px) {
-    p {
-        font-size: 2rem;
-    }
+.fmsgc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    #clock {
-        font-size: 5rem;
-    }
+.finalP {
+    color: #fff;
+    font-size: 4rem;
+    font-family: "Jacquard 24", system-ui;
+    display: block;
+}
 
-    #alert {
-        font-size: 0.3rem;
-    }
-
-    .links {
-        width: 2rem;
-        height: 2rem;
-    }
 }

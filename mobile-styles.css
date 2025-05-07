@@ -1,0 +1,223 @@
+@media (max-width: 600px) {
+    
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-family: "Jacquard 24", system-ui;
+}
+
+.cascadia-mono {
+    font-family: "Cascadia Mono", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    background-color: #000;
+    display: grid;
+    grid-template-areas: 
+                    'info-container'
+                    'story-container';
+    grid-template-rows: 30vh 70vh;
+}
+
+.start-screen {
+    z-index: 5;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button {
+    width: 12rem;
+    height: 5rem;
+    font-size: 2rem;
+    background-color: #000;
+    border: 2px solid #3d3d3d;
+    box-shadow: 2px 2px 25px #3d3d3d;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    font-family: "Jacquard 24", system-ui;
+}
+
+.info-container {
+    grid-area: info-container;
+    display: grid;
+    grid-template-areas: 
+                    'clock-container' 
+                    'alert-container';
+    grid-template-rows: 50% 50%;
+}
+
+.clock-container {
+    grid-area: clock-container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock {
+    grid-area: clock;
+    color: #fff;
+    font-size: 6rem;
+}
+
+.alert-container {
+    grid-area: alert-container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#alert {
+    grid-area: alert;
+    color: #fff;
+    text-align: center;
+    font-size: 2.1rem;
+}
+
+.story-container {
+    grid-area: story-container;
+    display: grid;
+    grid-template-areas: 
+                    'riddle-container'
+                    'media-container';
+    grid-template-rows: 42% 58%;
+}
+
+.riddle {
+    grid-area: riddle-container;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.riddle p {
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+input {
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #1b1b1b;
+    border: none;
+    width: 10rem;
+    height: 2rem;
+}
+
+.Try-buttom {
+    color: #fff;
+    font-size: 1rem;
+    background-color: rgb(216, 0, 0);
+    border-radius: 5px;
+    border: none;
+    width: 6rem;
+    height: 2rem;
+    margin: 3rem 1rem;
+    cursor: pointer; 
+}
+
+.video-container {
+    grid-area: media-container;
+    position: relative;
+    padding: 0;
+}
+
+
+.background-gif {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.text-container {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.subtitles {
+    text-align: center;
+    font-family: "tahoma";
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.links-container {
+    position: fixed;
+    z-index: 3;
+    width: 50px;
+    height: 110px;
+    /* height: 170px; add my page link */
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 43, 43);
+    box-shadow: 1px 1px 5px rgb(255, 43, 43);
+    margin-left: 2px;
+}
+
+.links {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+}
+
+#lnk-hidden {
+    display: none;
+}
+
+.fmsgc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+}
+
+.finalP {
+    color: #fff;
+    font-size: 3rem;
+    font-family: "Jacquard 24", system-ui;
+}
+
+}

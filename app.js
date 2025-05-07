@@ -1,9 +1,22 @@
-function finalImg() {
-    const container = document.querySelector("body");
-    const img = document.createElement("img");
-    img.src = "media/news.png";
-    img.setAttribute("id", "finalImg");
-    container.appendChild(img)
+const startScreen = document.querySelector(".start-screen");
+const startBtn = document.querySelector("#start-button");
+const bgMusic = document.querySelector("audio");
+bgMusic.volume = 0.3;
+
+
+let totalTime = 600;
+
+startBtn.addEventListener("click", () => {
+    startScreen.remove();
+    bgMusic.play();
+    countdown(totalTime)
+    setTimeout(() =>  {
+        storyLine();
+    }, 3000)
+});
+
+function final() {
+    createFinalscreen();
 }
 
 function countdown(leftTime) {
@@ -21,27 +34,16 @@ function countdown(leftTime) {
         if (leftTime > 0) {
             leftTime--;
         } else {
-            clearInterval(countDown)
-            const videoContainer = document.querySelector(".video-container");
-            videoContainer.innerHTML = " ";
-            const showVideo = document.createElement("video");
-            showVideo.src = "media/Final.hevc.mp4";
-            showVideo.autoplay = true;
-            showVideo.preload = "auto";
-            videoContainer.appendChild(showVideo);
-            showVideo.addEventListener("ended", () => {
-                const body = document.querySelector("body");
-                body.style.backgroundColor = "#000";
-                body.innerHTML = " ";
-                finalImg();
-            });
+            const body = document.querySelector("body");
+            body.style.backgroundColor = "#000"
+            body.innerHTML = " ";
         }
 
         const alert = document.querySelector("#alert")
         if (leftTime >= 590) {
             alert.style.color = "#fff";
         } else {
-            alert.style.color = "#000";
+            alert.style.opacity = "0";
         }
     }
 
@@ -49,131 +51,160 @@ function countdown(leftTime) {
     updateClock();
 }
 
-let totalTime = 600;
-countdown(totalTime)
-
-
 const data = [
     {
-        riddle: "Though invisible, everyone desires it, Opens doors and minds, always progresses. In books and words, it is hidden, The greatest treasure a human has ever had.",
-        answer: "knowledge",
-        video: "media/Journal1.hevc.mp4"
+        riddle: `
+            ¿Qué se abre cuando no hay viento, se cierra sin advertencia,
+            y deja entrar sin que nadie lo note?
+        `,
+        answer: ["la puerta", "una puerta", "puerta"],
+        script: `
+            Trabajo en una estación de servicio, en las afueras de la ciudad.
+            De esas que están en mitad de la nada, con una sola carretera que,
+            parece no ir a ningún lado. Tengo turno nocturno los fines de
+            semana. En teoría es tranquilo. Nadie entra después de la 1:00 am,
+            excepto algún que otro camionero buscando café, o alguien
+            demasiado cansado, para seguir manejando.
+            Hace unas semanas, algo raro empezó a pasar.
+            Todo comenzó un viernes. Eran las 2:43 am, lo recuerdo bien porque,
+            estaba mirando el reloj, esperando que dieran las 3 para salir a fumar.
+            La puerta automática se abrió sola. No es raro cuando hay viento,
+            pero esa noche no había ni una brisa. Me asomé por el mostrador y,
+            no había nadie. Me acerqué miré afuera. Nada. Cerré la puerta
+            manualmente y seguí con mi rutina.
+        `
     },
     {
-        riddle: "Knows nothing, yet thinks it knows everything, Blind obstinacy is its loyal companion. When it manifests, chaos will reign, And in the shadow, its dark reign will grow.",
-        answer: "ignorance",
-        video: "media/Journal2.hevc.mp4"
+        riddle: `
+            Tiene forma, pero no cuerpo. Lo ves, pero no te ve.
+            Solo una te pertenece. ¿Qué es?
+        `,
+        answer: ["la sombra", "una sombra", "sombra"],
+        script: `
+            Al día siguiente, a la misma hora exacta, volvió a pasar.
+            Esta vez al mirar hacia la entrada, vi a un hombre parado,
+            al borde del estacionamiento. No se movía solo estaba ahí.
+            Usaba una gorra y la visera baja, parecía mirar directamente
+            hacia el local. No hizo ademán de entrar. Después de unos segundos,
+            desapareció caminando hacia el campo, al costado de la carretera.
+            No lo vi más.
+            Pensé que quizás, estaba esperando a que lo recogieran,
+            pero nadie vino. A esa hora ni siquiera hay señal, de celular en esa zona. .
+            Empecé a fijarme en, los registros de la cámara de seguridad.
+            Y ahí, fue donde todo se volvió más raro.
+            En los videos, la puerta sí se abre, pero no entra nadie.
+            Y en la grabación de la segunda noche, no hay rastro del hombre.
+            Yo lo vi Lo juro. Pero la cámara, no captó a nadie parado ahí afuera.
+        `
     },
     {
-        riddle: "Enters uninvited, leaves doubts as it passes, Breaks bonds, sows fear without end. Never shows itself, but is always felt, An invisible poison, growing in the mind.",
-        answer: "distrust",
-        video: "media/Journal3.hevc.mp4"
+        riddle: `
+            ¿Qué es en lo que crees, aunque la razón lo rechace?
+        `,
+        answer: ["el presentimiento", "un presentimiento", "presentimiento"],
+        script: `
+            Seguí trabajando igual. No dije nada. Pensé que quizá estaba cansado y
+            sugestionadome. Pero anoche fue distinto.
+            Llegué como siempre a las 11:00 pm, A las 2:42 ya estaba nervioso
+            esperando. Esta vez la puerta no se abrió. En cambio, escuché algo
+            desde el baño de empleados. Un golpeteo, Como si alguien raspara,
+            suavemente la puerta desde dentro.
+            Ese baño no tiene ventanas. Nadie puede entrar sin pasar, por la tienda.
+        `
     },
     {
-        riddle: "End of all, without exception, No one escapes its silent song. Eternal journey, endless mystery, Where everything that had a beginning ends.",
-        answer: "death",
-        video: "media/Final.hevc.mp4"
+        riddle: `
+            Si estás seguro de estar en un lugar, pero nadie puede probarlo,
+            ¿exististe ahí realmente?
+        `,
+        answer: ["no", "no lo se"],
+        script: `
+            Tomé valor y me acerqué. Toqué la puerta, solo habia silencio.
+            Abrí lentamente, estaba vacío. Pero lo raro no fue eso.
+            Lo raro fue que, sobre el espejo empañado había, una frase escrita con un dedo:,
+            "Tú también vas a olvidar que estuviste aquí". "Tú también vas a olvidar que estuviste aquí".
+            No supe qué hacer. Cerré el local dos horas antes, y me fui.
+            Hoy pedí ver las cámaras, de anoche con el supervisor. Quería mostrarle lo del baño.
+            Pero en las grabaciones no estoy.
+            No aparezco llegando, ni dentro de la tienda, ni saliendo.
+            Como si, esa noche nunca hubiera trabajado.
+        `
     }
 ];
 
 let currentIndex = 0;
+let currentData = data[currentIndex];
+let currentRiddle = currentData["riddle"];
+let currentAnswer = currentData["answer"];
+let currentScript = currentData["script"];
 
-function storyLine() {
-    const videoContainer = document.querySelector(".video-container");
-    videoContainer.innerHTML = " ";
+function sliceSubtitles(text){
+    /*script to phrases*/
+    const subtitles = document.querySelector(".subtitles");
+    subtitles.innerHTML = " ";
 
-    if (currentIndex === 0) {
-        nextRiddle();
-    } else if (currentIndex === 1) {
-        let video = document.createElement("video");
-        video.src = "media/video2.hevc.mp4";
-        video.autoplay = true;
-        video.preload = "auto";
-        videoContainer.appendChild(video);
-        video.addEventListener("ended", () => {
+    const slices = text.split(/[.,;]/);
+    let idx = 0;
+
+    const intervalo = setInterval(() => {
+        if (idx < slices.length) {
+            subtitles.textContent = slices[idx];
+            idx++;
+        } else {
+            clearInterval(intervalo);
             nextRiddle();
-        });
-    } else if (currentIndex === 2) {
-        let video = document.createElement("video");
-        video.src = "media/video3.hevc.mp4";
-        video.autoplay = true;
-        video.preload = "auto";
-        videoContainer.appendChild(video);
-        video.addEventListener("ended", () => {
-            nextRiddle();
-        });
-    } else if (currentIndex === 3) {
-        nextRiddle();
-    }
+        }
+
+    }, 3000);
 
 }
 
-let firstVideo = document.querySelector("#first-video");
-firstVideo.addEventListener("ended", () => {
-    storyLine();
-});
+function storyLine() {
+        sliceSubtitles(currentScript.toUpperCase());
+}
 
 function nextRiddle() {
     const riddleContainer = document.querySelector(".riddle");
     riddleContainer.innerHTML = "";
 
-    const videoContainer = document.querySelector(".video-container");
-    videoContainer.innerHTML = "";
-
-    const font = "sans-serif";//"'Courier New', Courier, monospace"
-
-    let currentData = data[currentIndex];
-    let riddle = currentData["riddle"];
-    let answer = currentData["answer"];
-    let video = currentData["video"];
+    const font = '"Cascadia Mono", sans-serif';//"'Courier New', Courier, monospace"
 
     const showRiddle = document.createElement("p");
-    showRiddle.textContent = riddle;
+    showRiddle.textContent = currentRiddle;
     showRiddle.style.fontFamily = font;
     riddleContainer.appendChild(showRiddle);
 
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "What is it?";
+    input.placeholder = "¿Que es?";
     input.style.fontFamily = font;
     riddleContainer.appendChild(input);
 
     const button = document.createElement("button");
-    button.textContent = "try";
+    button.textContent = "Intentar";
+    button.classList.add("Try-buttom");
     button.style.fontFamily = font;
     riddleContainer.appendChild(button);
 
-    const showVideo = document.createElement("video");
-    showVideo.src = video;
-    showVideo.style.display = "none";
-    showVideo.preload = "auto";
-    videoContainer.appendChild(showVideo);
-
     button.addEventListener("click", ()=> {
-        if (input.value.toLowerCase() === answer) {
-            riddleContainer.innerHTML = "";
-            showVideo.style.display = "block";
-            showVideo.autoplay = true;
-        }
-    });
 
-    showVideo.addEventListener("ended", () => {
-        let leftTime = countdown; 
-        if (currentIndex <= data.length) {
-            currentIndex++;
-            if (currentIndex < 3) {
-                setTimeout(storyLine, 30000);
-            } else if (currentIndex == 3) {
-                storyLine()
-            } else {
-                const body = document.querySelector("body");
-                body.style.backgroundColor = "#000"
-                body.innerHTML = " ";
-                finalImg();
+        currentAnswer.forEach(option => {
+            if (input.value.toLowerCase().trim() === option.toLowerCase().trim()) {
+                if (currentIndex < data.length - 1) {
+                    currentIndex++;
+                    riddleContainer.innerHTML = "";
+                    currentData = data[currentIndex];
+                    currentScript = currentData["script"];
+                    currentAnswer = currentData["answer"];
+                    currentRiddle = currentData["riddle"];
+                    storyLine();
+                } else {
+                    const body = document.querySelector("body");
+                    body.style.backgroundColor = "#000"
+                    body.innerHTML = " ";
+                    final();
+                }
             }
-        }
+        });
     });
 }
-
-let videoContainer = document.querySelector(".video-container");
-
